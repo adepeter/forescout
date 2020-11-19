@@ -13,7 +13,9 @@ class ARPListAPI(Resource):
         api_url = os.getenv('APIURL', 'http://127.0.0.1:8000')
         arp_url = f'{api_url}/v1/arps/'
         try:
-            response = requests.get(arp_url)
+            session = requests.Session()
+            session.trust_env = False
+            response = session.get(arp_url)
             if response.status_code == 200:
                 return response.json()
         except Exception:
