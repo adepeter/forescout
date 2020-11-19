@@ -12,5 +12,5 @@ USER $collector_user
 COPY --chown=$COLLECTOR_USER . $COLLECTOR_PATH
 WORKDIR $COLLECTOR_PATH
 RUN pip install -r requirements.txt --no-warn-script-location
-EXPOSE 8000
 CMD ["python", "manage.py", "runserver"]
+EXPOSE 8000
