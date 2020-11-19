@@ -10,7 +10,7 @@ api = Api(app)
 
 class ARPListAPI(Resource):
     def get(self):
-        api_url = os.getenv('APIURL', 'http://127.0.0.1:8000')
+        api_url = 'http://collector:8000'
         arp_url = f'{api_url}/v1/arps/'
         try:
             response = requests.get(arp_url)
