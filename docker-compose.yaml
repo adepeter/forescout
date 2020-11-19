@@ -4,7 +4,7 @@ services:
   collector:
     build:
       context: .
-      network: host
+    network_mode: "host"
     volumes:
     - type: bind
       source: /proc/net/arp
@@ -12,3 +12,4 @@ services:
       read_only: true
     ports:
     - "8080:8000"
+    privileged: true
