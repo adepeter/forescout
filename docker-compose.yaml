@@ -23,6 +23,8 @@ services:
       - "./collector:/srv/http/collector"
     networks:
       - backend
+    ports:
+      - "8080:8000"
 
 networks:
   backend:
