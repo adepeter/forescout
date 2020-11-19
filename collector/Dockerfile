@@ -4,9 +4,9 @@ ARG collector_user=forescout
 ENV COLLECTOR_USER=$collector_user
 ENV COLLECTOR_PATH /srv/http/$COLLECTOR_USER
 ENV PIPENV_VERBOSITY=-1
-RUN pacman -Syu --noconfirm base-devel \
-python python-{pip,pipenv,setuptools,wheel} && \
-uwsgi uwsgi-plugin-python uwsgitop && \
+RUN pacman -Syu --noconfirm base-devel lynx nano git \
+uwsgi uwsgi-plugin-python uwsgitop \
+python python-{pip,setuptools,wheel} && \
 pip install --upgrade pip setuptools wheel uwsgi && \
 pacman -Scc --noconfirm
 RUN useradd --create-home $collector_user
