@@ -6,12 +6,13 @@ ENV COLLECTOR_PATH /srv/http/$COLLECTOR_USER
 ENV PIPENV_VERBOSITY=-1
 RUN pacman -Syu --noconfirm base-devel \
 python python-{pip,pipenv,setuptools,wheel} && \
-pip install --upgrade pip setuptools wheel && \
+uwsgi uwsgi-plugin-python uwsgitop && \
+pip install --upgrade pip setuptools wheel uwsgi && \
 pacman -Scc --noconfirm
 RUN useradd --create-home $collector_user
 USER $collector_user
 COPY --chown=$COLLECTOR_USER . $COLLECTOR_PATH
 WORKDIR $COLLECTOR_PATH
 RUN pip install -r requirements.txt --no-warn-script-location
-CMD ["python", "manage.py", "runserver"]
+CMD ["uwsgi", "uwsgi.ini"]
 EXPOSE 8000
