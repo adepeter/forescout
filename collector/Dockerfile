@@ -12,8 +12,6 @@ RUN useradd --create-home $collector_user
 USER $collector_user
 COPY --chown=$COLLECTOR_USER . $COLLECTOR_PATH
 WORKDIR $COLLECTOR_PATH
-RUN pipenv install && \
-pipenv shell && \
-pip install -r requirements.txt --no-warn-script-location
+RUN pip install -r requirements.txt --no-warn-script-location
 CMD ["python", "manage.py", "runserver"]
 EXPOSE 8000
