@@ -24,4 +24,4 @@ class ARPListAPI(Resource):
 def home():
     return redirect('/v1/arps')
 
-api.add_resource(ARPListAPI, '/v1/arps', endpoint='arps')
+api.add_resource(ARPListAPI, '/v1/arpss', endpoint='arps')
