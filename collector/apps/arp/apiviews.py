@@ -16,8 +16,8 @@ class ARPListAPIView(APIView):
             arp_data = {}
             for i, v in enumerate(arp_table_data):
                 for k in v:
-                    arp_data.setdefault('ip_address', v['IP address'])
-                    arp_data.setdefault('mac_address', v['HW address'])
-                    arp_data.setdefault('device_name', v['Device'])
+                    arp_data['ip_address'] = v['IP address']
+                    arp_data['mac_address'] = v['HW address']
+                    arp_data['device_name'] = v['Device']
                 new_arp_table_data.append(arp_data)
         return Response(new_arp_table_data, status=status.HTTP_200_OK)

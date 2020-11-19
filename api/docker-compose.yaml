@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+    restart: always
+    volumes:
+    - .:/srv/http/api
+    ports:
+    - "80:5000"
