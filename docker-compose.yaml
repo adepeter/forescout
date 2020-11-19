@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  api:
+    networks:
+      -
+  collector:
+    build:
+      context: .
+    volumes:
+    - type: bind
+      source: /proc/net/arp
+      target: /proc/net/arp
+      read_only: true
+    networks:
+      - collector
+    ports:
+    - "8080:8000"
+
+networks:
+  collector:
