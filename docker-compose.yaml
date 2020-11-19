@@ -4,10 +4,5 @@ services:
   collector:
     build:
       context: .
-    volumes:
-    - type: bind
-      source: /proc/net/arp
-      target: /proc/net/arp
-      read_only: true
     ports:
     - "8080:8000"
