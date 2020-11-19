@@ -1,11 +1,9 @@
 FROM python
 ARG debug=0
-ARG apiurl=collector
 ENV FLASK_DEBUG=$debug
 ENV FLASK_APP app
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
-ENV APIURL=http://$apiurl:8000
 RUN apt-get update && \
     apt-get install -y \
     build-essential \

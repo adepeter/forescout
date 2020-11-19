@@ -6,19 +6,21 @@ services:
     networks:
       - backend
     volumes:
-    - "./api:/srv/http/api"
+      - "./api:/srv/http/api"
+    environment:
+      - APIURL=http://collector:8000
     restart: always
     depends_on:
       - collector
     ports:
-    - "80:5000"
+      - "80:5000"
 
   collector:
     build:
       context: ./collector
       network: host
     volumes:
-    - "./collector:/srv/http/collector"
+      - "./collector:/srv/http/collector"
     networks:
       - backend
 
