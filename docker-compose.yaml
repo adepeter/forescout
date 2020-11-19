@@ -16,11 +16,11 @@ services:
   collector:
     build:
       context: ./collector
+      network: host
     volumes:
     - "./collector:/srv/http/collector"
     networks:
       - backend
-    network_mode: "host"
 
 networks:
   backend:
